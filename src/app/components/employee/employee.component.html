@@ -1,0 +1,54 @@
+<h1>Employees</h1>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Salary</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-mouseenter="">
+      <td *ngIf="employees.length == 0" colspan="7"><h6>No Employee Found</h6></td>
+    </tr>
+    <tr *ngFor="let employee of employees;">
+      <td>
+        <span> {{employee.employeeID}} </span>
+      </td>
+      <td>
+        <!-- In order to bind data to text using ngModel, FormsModule is required to be injected -->
+        <input *ngIf="isEditClicked" type="text" placeholder="Enter first name" [(ngModel)]="employee.firstName"/> <!--String interpolation method : value="{{employee.firstName}}"-->
+        <span *ngIf="!isEditClicked">{{employee.firstName}}</span>
+      </td>
+      <td>
+        <input *ngIf="isEditClicked" type="text" placeholder="Enter last name" [(ngModel)]="employee.lastName"/>
+        <span *ngIf="!isEditClicked">{{employee.lastName}}</span>
+      </td>
+      <td>
+        <input *ngIf="isEditClicked" type="text" placeholder="Enter salary" [(ngModel)]="employee.salary "/>
+        <span *ngIf="!isEditClicked">{{employee.salary | number:'5.3-5'}}</span>
+      </td>
+      <td>
+        <input *ngIf="isEditClicked" type="text" placeholder="Enter date of birth" [(ngModel)]="employee.dOB"/>
+        <span *ngIf="!isEditClicked">{{employee.dOB | date:'MMM dd, yyyy'}}</span>
+      </td>
+      <td>
+        <input *ngIf="isEditClicked" type="text" placeholder="Enter email" [(ngModel)]="employee.email"/>
+        <span *ngIf="!isEditClicked">{{employee.email}}</span>
+      </td>
+      <td>
+        <span *ngIf="!isEditClicked">
+          <button class="btn btn-dark" (click)="EditEmployee(employee.employeeID)">Edit User</button>
+        </span>
+        <span *ngIf="isEditClicked">
+          <button class="btn btn-success" (click)="UpdateEmployee()">Update User</button>
+          <button [class] = "['btn', 'btn-danger']" (click)="CancelUpdate()" style="margin-left:5px;">Cancel</button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
