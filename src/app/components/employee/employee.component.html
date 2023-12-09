@@ -1,6 +1,7 @@
 <h1>Employees</h1>
 
 <input type="text" placeholder="Search employee" [(ngModel)]="searchedEmployee">
+<button class="btn btn-success" (click)="AddStock()">Add Stock</button>
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -13,7 +14,7 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody> 
     <tr>
       <td *ngIf="employees.length == 0" colspan="7"><h6>No Employee Found</h6></td>
     </tr>
