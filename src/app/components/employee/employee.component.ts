@@ -11,11 +11,13 @@ export class EmployeeComponent implements OnInit {
   public employees: IEmployeeModel[];
   public salaryHighlighter:string;
   public cellTextDynamicColor: string;
+  public searchedEmployee: string;
 
   constructor() {
     this.employees = [];
     this.salaryHighlighter = "";
     this.cellTextDynamicColor = ""
+    this.searchedEmployee = '';
   }
 
   ngOnInit(): void {

@@ -1,4 +1,6 @@
 <h1>Employees</h1>
+
+<input type="text" placeholder="Search employee" [(ngModel)]="searchedEmployee">
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -15,14 +17,14 @@
     <tr>
       <td *ngIf="employees.length == 0" colspan="7"><h6>No Employee Found</h6></td>
     </tr>
-    <tr *ngFor="let employee of employees;" appHighlight="{{cellTextDynamicColor}}">
+    <tr *ngFor="let employee of employees | search: searchedEmployee;" appHighlight="{{cellTextDynamicColor}}">
       <td>
         <span> {{employee.employeeID}} </span>
       </td>
       <td>
         <!-- In order to bind data to text using ngModel, FormsModule is required to be injected -->
         <input *ngIf="isEditClicked" type="text" placeholder="Enter first name" [(ngModel)]="employee.firstName"/> <!--String interpolation method : value="{{employee.firstName}}"-->
-        <span *ngIf="!isEditClicked">{{employee.firstName}}</span>
+        <span *ngIf="!isEditClicked">{{employee.firstName | parenthesis : false }}</span>
       </td>
       <td>
         <input *ngIf="isEditClicked" type="text" placeholder="Enter last name" [(ngModel)]="employee.lastName"/>
@@ -30,7 +32,8 @@
       </td>
       <td [ngClass]="employee.salary > 6000 ? 'cellTextRed':'cellTextBlue'">
         <input *ngIf="isEditClicked" type="text" placeholder="Enter salary" [(ngModel)]="employee.salary "/>
-        <span *ngIf="!isEditClicked">{{employee.salary | number:'4.3-5'}}</span>
+        <span *ngIf="!isEditClicked">{{employee.salary | parenthesis : true }}</span>
+        <!-- <span *ngIf="!isEditClicked">{{employee.salary | number:'4.3-5' }}</span> -->
       </td>
       <td [ngStyle]="{'color':cellTextDynamicColor}"> <!--Property binding - Apply dynamic style-->
         <input *ngIf="isEditClicked" type="text" placeholder="Enter date of birth" [(ngModel)]="employee.dOB"/>
