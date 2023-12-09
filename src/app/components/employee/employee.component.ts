@@ -25,7 +25,7 @@ export class EmployeeComponent implements OnInit {
         firstName: 'Sangram',
         lastName: 'Pattanayak',
         salary: 6000,
-        dOB: new Date('1984-07-20T00:00:00'),
+        dOB: new Date('1888-03-29T00:00:00'),
         email: 'sangram@mysite.com',
       },
       {
