@@ -15,7 +15,7 @@
     <tr>
       <td *ngIf="employees.length == 0" colspan="7"><h6>No Employee Found</h6></td>
     </tr>
-    <tr *ngFor="let employee of employees;" appHighlight="purple">
+    <tr *ngFor="let employee of employees;" appHighlight="{{cellTextDynamicColor}}">
       <td>
         <span> {{employee.employeeID}} </span>
       </td>
