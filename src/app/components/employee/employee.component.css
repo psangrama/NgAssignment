@@ -5,3 +5,20 @@
 .nohighlight{
   background-color: white;
 }
+
+.cellTextRed{
+  color: red;
+}
+
+.cellTextWhite{
+  color: white;
+}
+
+.cellTextYellow{
+  color: yellow;
+}
+
+.cellTextBlue{
+  color: blueviolet;
+}
+

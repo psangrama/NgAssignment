@@ -1,5 +1,5 @@
 <h1>Employees</h1>
-<table class="table">
+<table class="table" appHighlight>
   <thead class="table-dark">
     <tr>
       <th scope="col">ID</th>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-mouseenter="">
+    <tr>
       <td *ngIf="employees.length == 0" colspan="7"><h6>No Employee Found</h6></td>
     </tr>
     <tr *ngFor="let employee of employees;">
@@ -28,15 +28,15 @@
         <input *ngIf="isEditClicked" type="text" placeholder="Enter last name" [(ngModel)]="employee.lastName"/>
         <span *ngIf="!isEditClicked">{{employee.lastName}}</span>
       </td>
-      <td>
+      <td [ngClass]="employee.salary > 6000 ? 'cellTextRed':'cellTextBlue'">
         <input *ngIf="isEditClicked" type="text" placeholder="Enter salary" [(ngModel)]="employee.salary "/>
-        <span *ngIf="!isEditClicked">{{employee.salary | number:'5.3-5'}}</span>
+        <span *ngIf="!isEditClicked">{{employee.salary | number:'4.3-5'}}</span>
       </td>
-      <td>
+      <td [ngStyle]="{'color':cellTextDynamicColor}"> <!--Property binding - Apply dynamic style-->
         <input *ngIf="isEditClicked" type="text" placeholder="Enter date of birth" [(ngModel)]="employee.dOB"/>
         <span *ngIf="!isEditClicked">{{employee.dOB | date:'MMM dd, yyyy'}}</span>
       </td>
-      <td>
+      <td ngClass="cellTextBlue"> <!-- Static style apply -->
         <input *ngIf="isEditClicked" type="text" placeholder="Enter email" [(ngModel)]="employee.email"/>
         <span *ngIf="!isEditClicked">{{employee.email}}</span>
       </td>
@@ -52,3 +52,6 @@
     </tr>
   </tbody>
 </table>
+<div>
+  <span>Color of Date of Birgh: </span><input type="color" [(ngModel)]="cellTextDynamicColor">
+</div>

@@ -9,9 +9,13 @@ import { IEmployeeModel } from 'src/models/Employee';
 export class EmployeeComponent implements OnInit {
   public isEditClicked = false;
   public employees: IEmployeeModel[];
+  public salaryHighlighter:string;
+  public cellTextDynamicColor: string;
 
   constructor() {
     this.employees = [];
+    this.salaryHighlighter = "";
+    this.cellTextDynamicColor = ""
   }
 
   ngOnInit(): void {
@@ -28,7 +32,7 @@ export class EmployeeComponent implements OnInit {
         employeeID: 2,
         firstName: 'Arun',
         lastName: 'Mohanty',
-        salary: 6000,
+        salary: 8000,
         dOB: new Date('1983-11-16T00:00:00'),
         email: 'arun@mysite.com',
       },
@@ -36,7 +40,7 @@ export class EmployeeComponent implements OnInit {
         employeeID: 3,
         firstName: 'Ashok',
         lastName: 'Chakravarthi',
-        salary: 6000,
+        salary: 9000,
         dOB: new Date('1991-10-18T00:00:00'),
         email: 'ashok@mysite.com',
       },
@@ -55,4 +59,14 @@ export class EmployeeComponent implements OnInit {
   public CancelUpdate(){
     this.isEditClicked = false;
   }
+  
+  public HasHigherSalary(salary: number){
+  if(salary > 6000){
+      this.salaryHighlighter =  "";
+    }
+
+  }
+
+
+
 }
