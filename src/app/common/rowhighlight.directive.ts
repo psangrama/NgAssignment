@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class RowHighlightDirective {
 
   @HostListener('mouseover') mouseoverMethod() {
-    this.changeColor("black", "yellow");
+    this.changeColor("black", "lightgreen");
   }
 
   @HostListener('mouseleave') mouseleaveMethod() {
@@ -18,12 +18,8 @@ export class RowHighlightDirective {
   }
   
 public changeColor(color: string, bgColor: string){
-  //console.log(this.elementRef.nativeElement.style.color);
-  //this.elementRef.nativeElement.style.color = color;
-  console.log(this.elementRef.nativeElement.style.backgroundColor);
-  this.elementRef.nativeElement.style.backgroundColor = "red";
-  console.log(this.elementRef.nativeElement.style.backgroundColor);
-  
+  this.elementRef.nativeElement.style.color = color;
+  this.elementRef.nativeElement.style.backgroundColor = bgColor;
 }
 
 
